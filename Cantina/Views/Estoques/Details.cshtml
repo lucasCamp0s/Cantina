@@ -1,0 +1,58 @@
+﻿@model Cantina.Models.Estoque
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Estoque</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.preco_compra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preco_compra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.preco_venda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preco_venda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fornecedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fornecedor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_produto }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-primary" })
+</p>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Cantina.Models.PedidoItem>
+
+@{
+    ViewBag.Title = "Pedidos";
+}
+<link href="~/Content/StyleSheet.css" rel="stylesheet" />
+<h2></h2>
+
+<p class="valores container" style="font-size: 60px;">
+    Pedidos &nbsp;&nbsp;&nbsp;&nbsp; @Html.ActionLink("Novo pedido", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<br />
+<table class="tabela">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.estoque.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pedido.statusVenda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantidade)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.estoque.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pedido.statusVenda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantidade)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id_pedidoItem }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.id_pedidoItem }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.id_pedidoItem }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

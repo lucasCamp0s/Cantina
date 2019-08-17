@@ -1,0 +1,144 @@
+﻿@model IEnumerable<Cantina.Models.Estoque>
+
+@{
+    ViewBag.Title = "Estoque";
+}
+<link href="~/Content/StyleSheet.css" rel="stylesheet" />
+<br /><br />
+<p class="valores container">
+   
+    <label>Digite o código:</label>&nbsp;&nbsp;&nbsp;<input type="text" name="aperte-me" placeholder="Código" id="btn" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label>Digite a quantidade:</label>&nbsp;&nbsp;&nbsp;<input type="text" name="aperte-me" placeholder="Quantidade" id="qtd" />
+</p>
+<br />
+<table class="tabela container">
+    <tr id="borda">
+        <th class="id_produto">
+
+            @Html.DisplayNameFor(model => model.id_produto)
+        </th>
+        <th class="nome">
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th class="precoVenda">
+            @Html.DisplayNameFor(model => model.preco_venda)
+        </th>
+        <th class="quantidade">
+            @Html.LabelForModel("Quantidade")
+        </th>
+    </tr>
+</table>
+
+<table class="tabela container" id="minhaTabela">
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>@Html.DisplayFor(modelItem => item.id_produto)</td>
+            <td>@Html.DisplayFor(modelItem => item.nome)</td>
+            <td>@Html.DisplayFor(modelItem => item.preco_venda)</td>
+        </tr>
+    }
+</table>
+<div style="overflow-y:auto;height:300px; width:auto">
+    <table class="tabela container" id="pedi">
+
+    </table>
+    </div>
+<br /><br />
+<div id="precoTotal" class="valorFinal container" style="text-align:right;">
+</div>
+
+@using (Html.BeginForm("Index", "CaixaController", FormMethod.Get))
+{
+    <button type="submit" name="botao1" id="botao1">Ir para Action</button>
+
+}
+
+
+@section Scripts{
+    <script>
+        var mostrar = "";
+        var codigo = [];
+        var nome = [];
+        var preco = [];
+        var cont = 0;
+        var precoTotal = 0;
+        var subtotal = "SUBTOTAL: R$ ";
+      
+        $(document).ready(function () {          
+         //   $('minhaTabela').hide();
+            var tabela = document.getElementById('minhaTabela');
+            var linhas = tabela.getElementsByTagName('tr');
+            var colunas = tabela.getElementsByTagName('td');
+            for (var i = 0; i < colunas.length; i = i+3) {
+              //  alert(i);
+                var cod = colunas[i].innerText;
+                var n = colunas[i + 1].innerText;
+                var p = colunas[i + 2].innerText;
+                
+                codigo[cont] = cod;
+                nome[cont] = n;
+                preco[cont] = p;
+
+                cont++;
+            }
+            /*for (var i = 0; i < linhas.length; i++) {
+                alert("cod " + codigo[i]);
+                alert("nome " + nome[i]);
+                alert("preco " + preco[i]);
+
+            }*/
+            document.getElementById('minhaTabela').innerHTML = "";
+                      
+        });
+        
+        $.fn.enterKey = function (fnc) {
+            return this.each(function () {
+                $(this).keypress(function (ev) {
+                    var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+                    if (keycode == '13') {
+                        fnc.call(this, ev);
+                    }
+                })
+            })
+        }
+
+        $(document).enterKey(function () {
+            //pegando valor do campo btn com o js
+            var cod = document.getElementById('btn').value;
+            //pegando valor do campo qtd com o js
+            var qtd = document.getElementById('qtd').value;
+            cod = cod - 1;
+
+            //validando se o usuario digitou algum valor no campo qtd,
+            //se não atribui valor a 1
+            if (qtd < 1) {
+                qtd = 1;
+            }
+
+            //pegando os valores no banco e validando se o código existe
+            for (var l = 0; l < codigo.length; l++) {
+                if(codigo[l] == cod + 1){
+                    mostrar += "<tr>" + "<td class= 'id_produto'>" + codigo[cod] + "</td>" + "<td class = 'nome'>" + nome[cod] + "</td>" + "<td class = 'precoVenda'>" + preco[cod] + "</td>" + "<td>" + qtd + "</td>" + "</tr>";
+                    preco[cod] = preco[cod].replace(",", ".");
+                    
+
+                    precoTotal += parseFloat(preco[cod]*qtd);
+                    
+                        document.getElementById('pedi').innerHTML = mostrar;
+                        document.getElementById('btn').value = "";
+                        document.getElementById('qtd').value = "";
+                        break;
+                }
+            }
+
+            //colocando preço dentro da div precoTotal            
+            document.getElementById('precoTotal').innerText = subtotal + precoTotal.toFixed(2);
+
+        });       
+
+        
+     </script>
+    
+    }

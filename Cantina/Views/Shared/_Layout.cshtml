@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/StyleSheetCabecalho.css" rel="stylesheet" />
+</head>
+
+<body>
+@if (Session["User"] != null)
+{
+    <input type="checkbox" id="check"/>
+    <label id="icone" for="check" style="font-size: 30px; top: -10px;"><img src="~/Imagens/icone.png"/> Menu </label>
+    <div class="barra">
+            <nav>
+                    <a href="http://localhost:12024/Home/Index"><div class="link">Caixa</div></a>
+                    <a href="http://localhost:12024/Sangrias/Index"><div class="link">Sangria</div></a>
+                    <a href="http://localhost:12024/Estoques/Index"><div class="link">Estoque</div></a>
+                    <a href="http://localhost:12024/PedidoItems/Index"><div class="link">Pedidos</div></a>
+                    <a href="http://localhost:12024/Pedidoes/Index"><div class="link">Pedidos</div></a>    
+               @Html.Partial("_LoginPartial")
+           </nav>
+    </div>
+}
+    <div class="container">
+        @RenderBody()
+        
+@if (Session["User"] != null)
+{
+    <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+}
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

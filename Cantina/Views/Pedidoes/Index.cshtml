@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Cantina.Models.Pedido>
+
+@{
+    ViewBag.Title = "Pedidos";
+}
+<link href="~/Content/StyleSheet.css" rel="stylesheet" />
+<h2></h2>
+
+<p class="valores container" style="font-size: 60px;">
+    Pedidos detalhados &nbsp;&nbsp;&nbsp;&nbsp;  @Html.ActionLink("Criar pedido", "Create", null, new {@class = "btn btn-primary" })
+</p>
+<br />
+<table class="tabela">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.cpg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.statusVenda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.cpg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.statusVenda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valor)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id_pedido }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.id_pedido }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.id_pedido }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

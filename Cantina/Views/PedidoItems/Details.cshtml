@@ -1,0 +1,42 @@
+﻿@model Cantina.Models.PedidoItem
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Pedidos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.estoque.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estoque.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pedido.id_pedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pedido.id_pedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantidade)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_pedidoItem }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-primary" })
+</p>

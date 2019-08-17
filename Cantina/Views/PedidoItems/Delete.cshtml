@@ -1,0 +1,48 @@
+﻿@model Cantina.Models.PedidoItem
+
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<h2>Deletar</h2>
+
+<h3>Tem certeza de que deseja excluir isso?</h3>
+<div>
+    <h4>Pedidos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.estoque.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estoque.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pedido.statusVenda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pedido.statusVenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantidade)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-danger" /> |
+            @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

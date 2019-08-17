@@ -1,0 +1,120 @@
+﻿body {
+    background-image: url('../Imagens/clean-2721104_1920.jpg');
+     position: relative;
+     top: 200px;
+}
+
+#telaLogin{
+    background-color: rgba(76, 50, 183, 0.1);
+    width: 100%;
+    height: 500px;
+    position: relative;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.7);
+}
+
+#telaLogin1 {
+    position: absolute;
+    right: 0;
+    background-image: url('../Imagens/fundologin.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100%;
+    width: 60%;
+    top: 0%;
+}
+
+#emailLogin{
+    position: relative;
+    left:0px;
+    float: left; 
+        font-size: 22px;   
+}
+
+#caixaEmail{
+    position:relative;
+    float: left;
+    left: 20px;
+}
+
+#caixaSenha{
+    position:relative;
+    float: left;
+    left: 20px;
+}
+
+#senhaLogin{
+    position: relative;
+    left:0px;
+    float: left;
+    font-size: 22px;
+}
+
+.form-control-custom{
+    position: relative;
+    border: 2px solid rgb(235, 235, 235);
+    border-radius: 20px;
+    height: 40px;
+    width: 200%;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    color: rgb(95, 92, 92);
+}
+
+#login{
+    position: relative;
+    top: 80px;
+    left: 27%;
+}
+
+.form-control-custom1{
+    position: relative;
+}
+
+.form-control-custom-button{
+    position: relative;
+    width: 200%;
+    height: 40px;
+    border-radius: 20px;
+    left: 20px;
+    background-image: linear-gradient(to right, rgb(255, 133, 0, 0.7), rgb(213, 4, 171, 0.8));
+    border: 0px solid black;
+
+}
+
+.checkbox{
+    position: relative;
+    left: 20px;
+    top: 10px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    
+}
+
+#imgCadeado{
+    position: relative;
+    left: 42%;
+    top: 40px;
+}
+
+@-webkit-keyframes fadeIn {
+0% { opacity: 0; }
+100% { opacity: 1; } 
+}
+@-moz-keyframes fadeIn {
+0% { opacity: 0;}
+100% { opacity: 1; }
+}
+@-o-keyframes fadeIn {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+@keyframes fadeIn {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+
+.fadeIn {
+-webkit-animation: fadeIn 4s ease-in-out;
+-moz-animation: fadeIn 4s ease-in-out;
+-o-animation: fadeIn 4s ease-in-out;
+animation: fadeIn 4s ease-in-out;
+}
